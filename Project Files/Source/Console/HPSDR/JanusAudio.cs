@@ -188,6 +188,7 @@ namespace PowerSDR
         const int LocalPort = 0;
        // private static IPEndPoint MetisEP = null;
         public static bool enableStaticIP = false;
+        public static bool disableDiscovery = false;
         public static uint static_host_network = 0;
         public static bool FastConnect = false;
         public static HPSDRHW MetisBoardID = HPSDRHW.Hermes;
@@ -254,7 +255,21 @@ namespace PowerSDR
             bool foundMetis = false;
             List<HPSDRDevice> mhd = new List<HPSDRDevice>();
 
-            if (enableStaticIP)
+            if (disableDiscovery)
+            {
+                Metis_IP_address = Console.getConsole().MetisNetworkIPAddr;
+                HPSDRDevice staticDevice = new HPSDRDevice();
+                staticDevice.IPAddress = Metis_IP_address;
+                staticDevice.MACAddress = "00-1C-C0-A2-22-5D";
+                staticDevice.deviceType = (HPSDRHW)0x01;
+                staticDevice.codeVersion = 0x45;
+                staticDevice.InUse = false;
+                staticDevice.hostPortIPAddress = IPAddress.Parse("127.0.0.1");
+                mhd.Add(staticDevice);
+                foundMetis = true;
+            }
+
+            if (!foundMetis && enableStaticIP)
             {
                 Metis_IP_address = Console.getConsole().MetisNetworkIPAddr;
  
@@ -309,7 +324,7 @@ namespace PowerSDR
                 }
             }
 
-            if (FastConnect  && (EthernetHostIPAddress.Length > 0) && (Metis_IP_address.Length > 0))
+            if (!foundMetis && FastConnect && (EthernetHostIPAddress.Length > 0) && (Metis_IP_address.Length > 0))
             {
                 // if success set foundMetis to true, and fill in ONE mhd entry.
                 IPAddress targetIP;

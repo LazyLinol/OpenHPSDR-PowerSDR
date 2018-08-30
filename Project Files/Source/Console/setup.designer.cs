@@ -248,6 +248,7 @@
             this.udStaticIP1 = new System.Windows.Forms.NumericUpDownTS();
             this.chkEnableStaticIP = new System.Windows.Forms.CheckBoxTS();
             this.chkFullDiscovery = new System.Windows.Forms.CheckBoxTS();
+            this.chkDisableDiscovery = new System.Windows.Forms.CheckBoxTS();
             this.radMetis = new System.Windows.Forms.RadioButtonTS();
             this.radOzyUSB = new System.Windows.Forms.RadioButtonTS();
             this.grpFRSRegion = new System.Windows.Forms.GroupBoxTS();
@@ -6481,6 +6482,7 @@
             this.panelTS7.Controls.Add(this.udStaticIPmask4);
             this.panelTS7.Controls.Add(this.udStaticIPmask3);
             this.panelTS7.Controls.Add(this.udStaticIPmask2);
+            this.panelTS7.Controls.Add(this.chkDisableDiscovery);
             this.panelTS7.Controls.Add(this.udStaticIPmask1);
             this.panelTS7.Controls.Add(this.radStaticIP4);
             this.panelTS7.Controls.Add(this.udStaticIP16);
@@ -7009,7 +7011,7 @@
             // btnSetIPAddr
             // 
             this.btnSetIPAddr.Image = null;
-            this.btnSetIPAddr.Location = new System.Drawing.Point(120, 107);
+            this.btnSetIPAddr.Location = new System.Drawing.Point(138, 106);
             this.btnSetIPAddr.Name = "btnSetIPAddr";
             this.btnSetIPAddr.Size = new System.Drawing.Size(60, 20);
             this.btnSetIPAddr.TabIndex = 4;
@@ -7151,6 +7153,16 @@
             this.chkFullDiscovery.Text = "Reuse Last IP Address";
             this.toolTip1.SetToolTip(this.chkFullDiscovery, "Use the last good IP address found for reconnecting to the radio.");
             this.chkFullDiscovery.CheckedChanged += new System.EventHandler(this.chkFullDiscovery_CheckedChanged);
+            // 
+            // chkDisableDiscovery
+            // 
+            this.chkDisableDiscovery.Image = null;
+            this.chkDisableDiscovery.Location = new System.Drawing.Point(3, 106);
+            this.chkDisableDiscovery.Name = "chkDisableDiscovery";
+            this.chkDisableDiscovery.Size = new System.Drawing.Size(112, 20);
+            this.chkDisableDiscovery.TabIndex = 25;
+            this.chkDisableDiscovery.Text = "Disable discovery";
+            this.chkDisableDiscovery.CheckedChanged += new System.EventHandler(this.chkDisableDiscovery_CheckedChanged);
             // 
             // radMetis
             // 
@@ -52866,6 +52878,6 @@
         private System.Windows.Forms.LabelTS lblOoopCounter;
         private System.Windows.Forms.LabelTS lblOOOPs;
         private System.Windows.Forms.RadioButtonTS radPROLatency0;
-
+        private System.Windows.Forms.CheckBoxTS chkDisableDiscovery;
     }
 }

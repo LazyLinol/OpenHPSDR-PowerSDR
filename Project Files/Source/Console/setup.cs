@@ -21806,6 +21806,11 @@ namespace PowerSDR
             }
         }
 
+        private void chkDisableDiscovery_CheckedChanged(object sender, EventArgs e)
+        {
+            JanusAudio.disableDiscovery = chkDisableDiscovery.Checked;
+        }
+
         //private void chkCTUNScroll_CheckedChanged(object sender, EventArgs e)
         //{
 
